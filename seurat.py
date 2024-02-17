@@ -49,7 +49,7 @@ def write_to_file(file_path, contents):
     with open(file_path, 'w') as file:
         file.write(contents)
 
-def main(watched_file, output_format):
+def main(watched_file, render_formatat):
     if not os.path.exists(watched_file):
         print(f"Error: '{watched_file}' does not exist.")
         sys.exit(1)
@@ -60,7 +60,7 @@ def main(watched_file, output_format):
 
     watched_file = os.path.abspath(watched_file)
 
-    event_handler = FileChangeHandler(watched_file, output_format)
+    event_handler = FileChangeHandler(watched_file, render_formatat)
 
     event_handler.on_modified(None)
 
