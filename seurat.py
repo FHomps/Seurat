@@ -8,8 +8,11 @@ from watchdog.events import FileSystemEventHandler
 from graphviz import Source
 
 REGEX_TRANSFORMATIONS = [
-    #(r'(\d+)', r'NUMBER_\1'),  # Replace numbers with 'NUMBER_<number>'
-    #(r'(\b\w{1,3}\b)', r'SHORT_\1')  # Replace short words with 'SHORT_<word>'
+    (r'(<br[^/]?\n?\s*)>', r'\1/>'),
+    (r'<tdl', r'<td align="left"'),
+    (r'<tdr', r'<td align="right"'),
+    (r'<brl', r'<br align="left"'),
+    (r'<brr', r'<br align="right"'),
 ]
 
 class FileChangeHandler(FileSystemEventHandler):
